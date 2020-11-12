@@ -6,4 +6,7 @@ from django.http import HttpResponse
 
 # 定义视图函数
 def index(request):
+    # 参数1：当前请求
+    # 参数2：模板文件
+    return render(request, 'index.html')
     return HttpResponse('OK')

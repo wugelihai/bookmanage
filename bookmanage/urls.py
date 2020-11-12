@@ -21,6 +21,7 @@ from django.contrib import admin
 urlpatterns = [
     # 正则为：只要不是admin就算匹配成功
     url(r'^admin/', admin.site.urls),
-    url(r'^index/', include('book.urls'))
+    url(r'^', include('book.urls')),
+    url(r'^pay/', include('pay.urls')),
 
 ]
