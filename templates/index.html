@@ -5,6 +5,13 @@
     <title>Title</title>
 </head>
 <body>
-<a href="#">哈哈</a>
+<a href="#">{{ name }}哈哈</a>
+<ul>
+{#html中的遍历#}
+    {% for book in books %}
+        <li>{{ book.name }}
+    {% endfor %}
+</ul>
+
 </body>
 </html>
