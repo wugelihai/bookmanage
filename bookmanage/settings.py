@@ -91,7 +91,6 @@ WSGI_APPLICATION = 'bookmanage.wsgi.application'
 DATABASES = {
     'default': {
         # engine引擎
-        # 'ENGINE': 'django.db.backends.sqlite3',
         'ENGINE': 'django.db.backends.mysql',
         'HOST':'127.0.0.1', #ip地址
         'PORT':'3306', # 端口号
