@@ -64,8 +64,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         # dirs设置模板路径
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -96,7 +95,7 @@ DATABASES = {
         'PORT':'3306', # 端口号
         'USER':'root',# 用户名
         'PASSWORD':'zhaoyuwei66',# 密码
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),# 指定数据库
+        'NAME': 'book',# 指定数据库
     }
 }
 

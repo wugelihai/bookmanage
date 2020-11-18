@@ -29,33 +29,24 @@ from django.db import models
 
 
 class BookInfo(models.Model):
-    name = models.CharField(max_length=10)
+    # 创建字段，字段类型...
+    name = models.CharField(max_length=20, verbose_name='名称')
+    pub_date = models.DateField(verbose_name='发布日期', null=True)
+    readcount = models.IntegerField(default=0, verbose_name='阅读量')
+    commentcount = models.IntegerField(default=0, verbose_name='评论量')
+    is_delete = models.BooleanField(default=False, verbose_name='逻辑删除')
+
+    class Meta:
+        db_table = 'bookinfo'  # 指明数据库表名
+        verbose_name = '图书'  # 在admin站点中显示的名称
 
     def __str__(self):
-        # 把模型以字符串的方式输
+        """定义每个数据对象的显示信息"""
         return self.name
 
 
+# 准备人物列表信息的模型类
 class PeopleInfo(models.Model):
-    # 选项：
-    name = models.CharField(max_length=10, unique=True, verbose_name='名字')
-    # 发布日期
-    pub_date = models.DateField(null=True)
-    # 阅读量
-    readcount = models.IntegerField(default=0)
-    # 点赞次数
-    commentcount = models.IntegerField(default=0)
-    # 是否逻辑删除
-    id_del = models.BooleanField(default=False)
-
-    class Meta:
-        db_table = 'bookinfo'
-        verbose_name = 'admin'
-
-
-# 准备任务列表信息的模型
-class PeopleInfo(models.Model):
-    # 有序字典
     GENDER_CHOICES = (
         (0, 'male'),
         (1, 'female')
@@ -63,7 +54,6 @@ class PeopleInfo(models.Model):
     name = models.CharField(max_length=20, verbose_name='名称')
     gender = models.SmallIntegerField(choices=GENDER_CHOICES, default=0, verbose_name='性别')
     description = models.CharField(max_length=200, null=True, verbose_name='描述信息')
-    # 外键 on_delete主表数据对从表有影响
     book = models.ForeignKey(BookInfo, on_delete=models.CASCADE, verbose_name='图书')  # 外键
     is_delete = models.BooleanField(default=False, verbose_name='逻辑删除')
 
